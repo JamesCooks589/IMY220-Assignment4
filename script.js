@@ -42,8 +42,8 @@ function checkForLink(msg){
         //For all the youtube links in the message
         //Add the iframe after the link but before the rest of the message
         for(let i = 0; i < youtubeLink.length; i++){
-            //Get the video id from the youtube link
-            let videoId = youtubeLink[i].split("=")[1];
+            //Get the video id from the youtube link from = to &
+            let videoId = youtubeLink[i].substring(youtubeLink[i].indexOf("=") + 1, youtubeLink[i].indexOf("&"));
             //Create the iframe
             let iframe = "<iframe width='100%' height='315' src='https://www.youtube.com/embed/" + videoId + " frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' allowfullscreen'></iframe>";
             //Insert the iframe into the message
