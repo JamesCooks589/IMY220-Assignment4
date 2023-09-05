@@ -32,8 +32,8 @@ $(document).ready(() => {
 
 //Function for checking if message contains youtube links
 function checkForLink(msg){
-    //A message can contain multiple youtube links for each link insert an iframe
-    //Check if message contains youtube link
+    //Check if message contains youtube links
+    //Regex for youtube link
     const youtubeRegex = /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/g;
     //If message contains youtube links insert iframe into message
     if(msg.match(youtubeRegex)){
@@ -45,7 +45,7 @@ function checkForLink(msg){
             //Get the video id from the youtube link from = to &
             let videoId = youtubeLink[i].substring(youtubeLink[i].indexOf("=") + 1, youtubeLink[i].indexOf("&"));
             //Create the iframe
-            let iframe = '<iframe width="100%" height="315" src="https://www.youtube.com/embed/' + videoId + '" title="AP Miss Fortune is the most annoying champion in the game..." frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+            let iframe = '<iframe width="100%" height="315" src="https://www.youtube.com/embed/' + videoId + '" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
             //Insert the iframe into the message
             msg = msg.replace(youtubeLink[i], "<br>" + youtubeLink[i] + iframe + "<br>");
         }
